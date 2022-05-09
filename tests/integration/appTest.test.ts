@@ -18,6 +18,11 @@ describe('POST /recommendations', () => {
     const response = await agent.post('/recommendations').send(song);
     expect(response.status).toBe(201);
   });
+
+  it('should return 422', async () => {
+    const response = await agent.post('/recommendations').send({});
+    expect(response.status).toBe(422);
+  });
 });
 
 describe('POST /recommendations/:id/upvote', () => {
