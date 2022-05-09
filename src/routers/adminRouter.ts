@@ -1,11 +1,10 @@
 import { Router } from "express";
-import { prisma } from "../database.js";
+import * as adminController from "../controllers/adminController";
 
 const adminRouter = Router();
 
-adminRouter.delete("/database", async (req, res) => {
-  await prisma.$executeRawUnsafe('TRUNCATE TABLE "recommendations"');
-  res.sendStatus(200);
-});
+adminRouter.delete("/database", adminController.truncateDatabase);
+
+adminRouter.post("/database/populate", adminController.populateDatabase);
 
 export default adminRouter;
