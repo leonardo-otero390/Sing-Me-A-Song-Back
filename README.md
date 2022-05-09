@@ -1,6 +1,8 @@
-## RepoProvas
+## Sing Me A Song API
 
-Share and discover your teacher's past tests.
+Share and discover new songs.
+
+This project is the backend for [Sing Me A Song](https://github.com/leonardo-otero390/Sing-Me-A-Song-Front)
 
 Features
 
