@@ -50,12 +50,12 @@ describe('POST /recommendations/:id/downvote', () => {
     expect(updatedSong.score).toBe(song.score - 1);
   });
 
-  // it('should remove song from database', async () => {
-  //   const song = await utilsDatabase.getRecommendationByScore(-5);
-  //   await agent.post(`/recommendations/${song[0].id}/downvote`);
-  //   const updatedSong = await utilsDatabase.getRecommendationById(song[0].id);
-  //   expect(updatedSong).toBe(null);
-  // });
+  it('should remove song from database', async () => {
+    const song = await utilsDatabase.getRecommendationByScore(-6);
+    await agent.post(`/recommendations/${song[0].id}/downvote`);
+    const updatedSong = await utilsDatabase.getRecommendationById(song[0].id);
+    expect(updatedSong).toBe(null);
+  });
 });
 
 describe('GET /recommendations', () => {

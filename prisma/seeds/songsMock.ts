@@ -15,7 +15,7 @@ export default [
   {
     name: 'Latino - Renata',
     youtubeLink: 'https://www.youtube.com/watch?v=LnAJjRflHFE',
-    score: -5,
+    score: -6,
   },
   {
     name: 'Chitãozinho E Xororó - Evidências',
