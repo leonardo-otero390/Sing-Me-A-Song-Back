@@ -21,7 +21,7 @@ describe('POST /recommendations', () => {
 });
 
 describe('POST /recommendations/:id/upvote', () => {
-  it('should return 201', async () => {
+  it('should return 200', async () => {
     await utilsDatabase.populateDatabase();
 
     const song = await utilsDatabase.getRandomRecommendation();
@@ -30,4 +30,25 @@ describe('POST /recommendations/:id/upvote', () => {
     const updatedSong = await utilsDatabase.getRecommendationById(song.id);
     expect(updatedSong.score).toBe(song.score + 1);
   });
+});
+
+describe('POST /recommendations/:id/downvote', () => {
+  beforeEach(async () => {
+    await utilsDatabase.populateDatabase();
+  });
+
+  it('should return 200', async () => {
+    const song = await utilsDatabase.getRandomRecommendation();
+    const response = await agent.post(`/recommendations/${song.id}/downvote`);
+    expect(response.status).toBe(200);
+    const updatedSong = await utilsDatabase.getRecommendationById(song.id);
+    expect(updatedSong.score).toBe(song.score - 1);
+  });
+
+  // it('should remove song from database', async () => {
+  //   const song = await utilsDatabase.getRecommendationByScore(-5);
+  //   await agent.post(`/recommendations/${song[0].id}/downvote`);
+  //   const updatedSong = await utilsDatabase.getRecommendationById(song[0].id);
+  //   expect(updatedSong).toBe(null);
+  // });
 });

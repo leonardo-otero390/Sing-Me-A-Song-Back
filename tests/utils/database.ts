@@ -21,3 +21,7 @@ export async function getRandomRecommendation() {
 export async function getRecommendationById(id: number) {
   return prisma.recommendation.findUnique({ where: { id } });
 }
+
+export async function getRecommendationByScore(score: number) {
+  return prisma.recommendation.findMany({ where: { score } });
+}

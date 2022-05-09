@@ -12,4 +12,9 @@ export default [
     name: 'TENACIOUS D - Kickapoo',
     youtubeLink: 'https://www.youtube.com/watch?v=hvvjiE4AdUI',
   },
+  {
+    name: 'Latino - Renata',
+    youtubeLink: 'https://www.youtube.com/watch?v=LnAJjRflHFE',
+    score: -5,
+  },
 ];
