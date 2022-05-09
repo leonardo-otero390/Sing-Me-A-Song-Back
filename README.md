@@ -28,11 +28,133 @@ Features
 ```json
 {
   "name": "Justin Bieber - Baby", // string @unique
-  "youtubeLink": "https://www.youtube.com/watch?v=kffacxfA7G4", // youtube link
+  "youtubeLink": "https://www.youtube.com/watch?v=kffacxfA7G4" // youtube link
 }
 ```
 
 - it returns status <strong>201</strong> for succes
+
+ </details>
+
+ <details>
+            <summary>
+                <strong>POST</strong> /recommendations/SONGID/upvote
+            </summary>
+
+- change SONGID to the song id your upvoting
+
+- implements a point to score
+
+- it returns status <strong>200</strong> for succes
+
+ </details>
+
+  <details>
+            <summary>
+                <strong>POST</strong> /recommendations/SONGID/downvote
+            </summary>
+
+- change SONGID to the song id your upvoting
+
+- remove a point of score
+
+- if score gets less than -5 the recommendation is removed
+
+- it returns status <strong>200</strong> for succes
+
+ </details>
+
+  <details>
+            <summary>
+                <strong>GET</strong> /recommendations
+            </summary>
+
+- get the last 10 recommendations
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Chitãozinho E Xororó - Evidências",
+    "youtubeLink": "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
+    "score": 245
+  }
+]
+```
+
+- it returns status <strong>200</strong> for succes
+
+ </details>
+
+  <details>
+            <summary>
+                <strong>GET</strong> /recommendations/SONGID
+            </summary>
+
+- change SONGID to the song id you're looking for
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Chitãozinho E Xororó - Evidências",
+    "youtubeLink": "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
+    "score": 245
+  }
+]
+```
+
+- it returns status <strong>200</strong> for succes
+
+ </details>
+
+  <details>
+            <summary>
+                <strong>GET</strong> /recommendations/random
+            </summary>
+
+- get a random recommendation where 70% of times the score is greater than 10
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Chitãozinho E Xororó - Evidências",
+    "youtubeLink": "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
+    "score": 245
+  }
+]
+```
+
+- it returns status <strong>200</strong> for succes
+
+ </details>
+
+   <details>
+            <summary>
+                <strong>GET</strong> /recommendations/top/AMOUNT
+            </summary>
+
+- Rank recommendations and return the top AMOUNT
+
+```json
+[
+  {
+    "id": 150,
+    "name": "Chitãozinho E Xororó - Evidências",
+    "youtubeLink": "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
+    "score": 245
+  },
+  {
+    "id": 12,
+    "name": "Falamansa - Xote dos Milagres",
+    "youtubeLink": "https://www.youtube.com/watch?v=ePjtnSPFWK8&ab_channel=CHXVEVO",
+    "score": 112
+  }
+]
+```
+
+- it returns status <strong>200</strong> for succes
 
  </details>
 
