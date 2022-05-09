@@ -242,5 +242,5 @@ npm run start (deploy)
 6. Run the project in development mode (nodemon)
 
 ```bash
-npm run start:dev
+npm run dev
 ```
