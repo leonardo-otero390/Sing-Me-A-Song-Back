@@ -64,3 +64,41 @@ describe('GET /recommendations', () => {
     expect(response.body[0]).toHaveProperty('score');
   });
 });
+
+describe('GET /recommendations/:id', () => {
+  it('should return 200 and a body', async () => {
+    await utilsDatabase.populateDatabase();
+    const song = await utilsDatabase.getRandomRecommendation();
+    const response = await agent.get(`/recommendations/${song.id}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('name');
+    expect(response.body).toHaveProperty('youtubeLink');
+    expect(response.body).toHaveProperty('score');
+  });
+});
+
+describe('GET /recommendations/random', () => {
+  it('should return 200 and a body', async () => {
+    await utilsDatabase.populateDatabase();
+    const response = await agent.get('/recommendations/random');
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('name');
+    expect(response.body).toHaveProperty('youtubeLink');
+    expect(response.body).toHaveProperty('score');
+  });
+});
+
+describe('GET /recommendations/top/:amount', () => {
+  it('should return 200 an array ordered', async () => {
+    await utilsDatabase.populateDatabase();
+    const response = await agent.get('/recommendations/top/5');
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveLength(5);
+    const first = response.body[0];
+    expect(first).toHaveProperty('name');
+    expect(first).toHaveProperty('youtubeLink');
+    expect(first).toHaveProperty('score');
+    const second = response.body[1];
+    expect(first.score).toBeGreaterThanOrEqual(second.score);
+  });
+});
