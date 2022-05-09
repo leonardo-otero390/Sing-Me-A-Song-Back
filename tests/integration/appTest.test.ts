@@ -52,3 +52,15 @@ describe('POST /recommendations/:id/downvote', () => {
   //   expect(updatedSong).toBe(null);
   // });
 });
+
+describe('GET /recommendations', () => {
+  it('should return 200 and a body', async () => {
+    await utilsDatabase.populateDatabase();
+    const response = await agent.get('/recommendations');
+    expect(response.status).toBe(200);
+    // expect(response.body.length).toBeLessThanOrEqual(10);
+    expect(response.body[0]).toHaveProperty('name');
+    expect(response.body[0]).toHaveProperty('youtubeLink');
+    expect(response.body[0]).toHaveProperty('score');
+  });
+});
