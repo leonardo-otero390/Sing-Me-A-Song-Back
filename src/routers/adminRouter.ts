@@ -1,10 +1,10 @@
-import { Router } from "express";
-import * as adminController from "../controllers/adminController.js";
+import { Router } from 'express';
+import * as adminController from '../controllers/adminController.js';
 
 const adminRouter = Router();
 
-adminRouter.delete("/database", adminController.truncateDatabase);
+adminRouter.delete('/database', adminController.truncateDatabase);
 
-adminRouter.post("/database/populate", adminController.populateDatabase);
+adminRouter.post('/database/populate', adminController.populateDatabase);
 
 export default adminRouter;
